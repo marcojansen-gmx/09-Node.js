@@ -1,5 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+let readme;
 
 const promise = inquirer
     .prompt([
@@ -45,23 +46,23 @@ promise.then ((response) => {
     // console.log(response);
     const {title, description, installation, usage, contributing, test, licence} = response;
     // console.log(title, description, installation, usage, contributing, test, licence);
-    const readMe = `# Title
+    readMe = `# Title
 ${title}
-
+      
 ## Description
 ${description}
-
+      
 ## Table of Contents
-    
+          
 * [Installation](#Installation)
 * [AcceptanceCriteria](#AcceptanceCriteria)
 * [Usage](#Usage)
 * [Contributing](#Contributing)
 * [Test](#Test)
 * [Licence](#Licence)
-   
-## AcceptanceCriteria
-    
+         
+## AcceptanceCriteria (example)
+          
 <!-- GIVEN I am feeling like taking a quiz challenge
 WHEN when I open the page
 THEN a start button is displayed to start a quiz
@@ -76,19 +77,23 @@ THEN my score gets saved for me even if I refresh the page
 WHEN I have submited my score
 THEN my score gets displayed on a highscore page
 -->
-    
+          
 ## Installation
 ${installation}
- 
+    
 ## Usage
 ${usage}
-
+      
 ## Contributing
 ${contributing}
-
+     
 ## License
-   
+         
 The project uses the following licence: ${licence}`;
-console.log(readMe);
 
+
+// console.log(readMe);
+    fs.writeFile('README.md', readMe, (err) => {
+        err ? console.error(err) : console.log('Success!')
+    });
 });
