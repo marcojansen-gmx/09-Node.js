@@ -1,6 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-let readme;
+let readMe;
 
 const promise = inquirer
     .prompt([
@@ -38,13 +38,13 @@ const promise = inquirer
             type: "list",
             message: "Please give us a brief description about your project!",
             choices: ["none", "BSD", "MIT", "GPL"],
-            name: "licence",
+            name: "license",
         },
 ]);
 
 promise.then ((response) => {
     // console.log(response);
-    const {title, description, installation, usage, contributing, test, licence} = response;
+    const {title, description, installation, usage, contributing, test, license} = response;
     // console.log(title, description, installation, usage, contributing, test, licence);
     readMe = `# Title
 ${title}
@@ -55,29 +55,11 @@ ${description}
 ## Table of Contents
           
 * [Installation](#Installation)
-* [AcceptanceCriteria](#AcceptanceCriteria)
 * [Usage](#Usage)
 * [Contributing](#Contributing)
 * [Test](#Test)
-* [Licence](#Licence)
-         
-## AcceptanceCriteria (example)
-          
-<!-- GIVEN I am feeling like taking a quiz challenge
-WHEN when I open the page
-THEN a start button is displayed to start a quiz
-WHEN push the start button
-THEN a quiz is starting which contains harry potter and lord of the rings characters
-WHEN I push the lord of the rings or harry potter button
-THEN my answer needs to be correct to increase my score
-WHEN I get through my 10 questions or the timer is exceeded
-THEN I get my final result
-WHEN I enter my initials and submit
-THEN my score gets saved for me even if I refresh the page
-WHEN I have submited my score
-THEN my score gets displayed on a highscore page
--->
-          
+* [License](#License)
+     
 ## Installation
 ${installation}
     
@@ -86,14 +68,16 @@ ${usage}
       
 ## Contributing
 ${contributing}
+
+## Test
+${test}
      
 ## License
          
-The project uses the following licence: ${licence}`;
+The project uses the following licence: ${license}`;
+console.log(readMe);
 
-
-// console.log(readMe);
-    fs.writeFile('README.md', readMe, (err) => {
-        err ? console.error(err) : console.log('Success!')
+fs.writeFile('README.md', readMe, (err) => {
+err ? console.error(err) : console.log('Success!')
     });
 });
