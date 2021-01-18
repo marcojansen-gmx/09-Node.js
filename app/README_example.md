@@ -1,5 +1,5 @@
 # Title
-project 1234
+example project
       
 ## Description
 description goes here
@@ -13,16 +13,16 @@ description goes here
 * [License](#License)
      
 ## Installation
-your installation section
+your installation section goes here
     
 ## Usage
-your usage section
+your usage section goes here
       
 ## Contributing
-your contributing section
+your contributing section goes here
 
 ## Test
-your test section
+your test section goes here
      
 ## License
          
